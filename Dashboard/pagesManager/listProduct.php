@@ -31,7 +31,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <link rel="stylesheet" href="../../assets/css/app.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles.css">
   <!-- endinject -->
   <link href="../images/favicon.ico" rel="icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -439,34 +439,48 @@
               <?php 
                 foreach($products as $product) {
               ?>
-              <div class="wrapper">
-           <div class="card text-center">
-            <div class="image">
-            <a href="../pagesManager/detailsProduct.php?id=<?php echo $product->id; ?>">
-                 <img style="max-width: 100%" src="<?php echo $product->image; ?>" alt="...">
-                </a>
-            </div>
-            <div class="about-product text-center">
-            <div class="card-body">
-                 <b class="card-text" style="color: #47b2e4;"><?php echo $product->title; ?></b><br><br>
-                 <b>R$:</b> <?php echo $product->value; ?>
-                </div>
-             <button class="btn btn-success buy-now">Ver Detalhes</button>      
-            </div>     
-           </div>
-          </div>
 
-              <!-- <div class="col-4" style="height: 390px;">
-               <div class="card ml-4" style="width: 14rem; height: 264px; ">
-                <a href="../pagesManager/detailsProduct.php?id=<?php echo $product->id; ?>">
-                 <img style="max-width: 100%" src="<?php echo $product->image; ?>" alt="...">
-                </a>
-                <div class="card-body">
-                 <b class="card-text" style="color: #47b2e4;"><?php echo $product->name; ?></b><br><br>
-                 <b>R$:</b> <?php echo $product->value; ?>
+                <div class="product-card">
+                  <a href="../pagesManager/detailsProduct.php?id=<?php echo $product->productId; ?>">
+                  <div class="main-images">
+                   <img id="blue" class="blue active" style="max-width: 100%" src="<?php echo $product->image; ?>" alt="blue">
+                   <img id="pink" class="pink" src="images/pink.png" alt="blue">
+                  <img id="yellow" class="yellow" src="images/yellow.png" alt="blue">
+                 </div>
+                  </a>
+                 <div class="shoe-details">
+                  <span class="shoe_name"><?php echo $product->title; ?></span>
+                  <p><?php echo $product->subtitle; ?></p>
+                  <div class="stars">
+                   <i class='bx bxs-star' ></i>
+                   <i class='bx bxs-star' ></i>
+                   <i class='bx bxs-star' ></i>
+                   <i class='bx bxs-star' ></i>
+                   <i class='bx bx-star' ></i>
+                  </div>
+                 </div>
+                <div class="color-price">
+                 <div class="color-option">
+                  <span class="color">Colour:</span>
+                  <div class="circles">
+                   <span class="circle blue active"  id="blue"></span>
+                   <span class="circle pink " id="pink"></span>
+                   <span class="circle yellow " id="yellow"></span>
+                  </div>
+                 </div>
+                 <div class="price">
+                  <span class="price_num">$ <?php echo $product->value; ?></span>
+                  <span class="price_letter">Apenas $ <?php echo $product->value; ?> reais</span>
+                 </div>
                 </div>
+                <a href="../pagesManager/detailsProduct.php?id=<?php echo $product->productId; ?>">
+                <div class="button">
+                 <div class="button-layer"></div>
+                 <button type="submit" href="../pagesManager/detailsProduct.php?id=<?php echo $product->id; ?>">Ver Detalhes</button>
+                </div>
+                </a>
                </div>
-              </div> -->
+
               <?php
                 }
               ?>
@@ -520,6 +534,20 @@
   <!-- Custom js for this page-->
   <script src="../js/dashboard.js"></script>
   <script src="../js/Chart.roundedBarCharts.js"></script>
+
+  <script>
+   let circle = document.querySelector(".color-option");
+
+   circle.addEventListener("click", (e)=>{
+     let target = e.target;
+     if(target.classList.contains("circle")){
+       circle.querySelector(".active").classList.remove("active");
+       target.classList.add("active");
+       document.querySelector(".main-images .active").classList.remove("active");
+       document.querySelector(`.main-images .${target.id}`).classList.add("active");
+     }
+   });
+  </script>
   <!-- End custom js for this page-->
 </body>
 
