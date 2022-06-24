@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
   session_start();
   require_once ("../classes/DAO/ProductDAO.php");
-  // $products = ProductDAO::getInstance()->findProducts();
+  $products = ProductDAO::getInstance()->findProducts();
 
 ?>
 
@@ -757,7 +757,7 @@ error_reporting(E_ALL);
                       ?>
 
                       <tr style="background-color: white !important;">
-                        <td><?php echo $product->name; ?></td>
+                        <td><?php echo $product->title; ?></td>
                         <td class="font-weight-bold">$<?php echo $product->value; ?></td>
                         <td><?php echo $product->inventory; ?></td>
                         <td class="font-weight-medium"><div class="badge badge-success">Concluído</div></td>

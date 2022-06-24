@@ -440,6 +440,7 @@
                 foreach($products as $product) {
               ?>
 
+<div class="col-6" style="height: 390px;">
                 <div class="product-card">
                   <a href="../pagesManager/detailsProduct.php?id=<?php echo $product->productId; ?>">
                   <div class="main-images">
@@ -480,6 +481,7 @@
                 </div>
                 </a>
                </div>
+</div>
 
               <?php
                 }
