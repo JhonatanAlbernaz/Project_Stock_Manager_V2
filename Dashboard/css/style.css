@@ -442,10 +442,10 @@
 }
 
 .divprovider img {
-width: 81px !important;
-margin-top: -15px;
-border-top-left-radius: 10px;
-border-bottom-left-radius: 10px;
+  width: 81px !important;
+  margin-top: -15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .margin-left-210px {

@@ -493,6 +493,13 @@ border-bottom-left-radius: 10px;
 color: red;
 }
 
+.divprovider img {
+  width: 81px !important;
+  margin-top: -15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
 .div-X-provider {
   width: 9%;
   height: 75px;
