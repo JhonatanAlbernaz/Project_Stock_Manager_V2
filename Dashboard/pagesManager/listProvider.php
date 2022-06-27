@@ -3,7 +3,7 @@
   session_start();
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
-  require_once __DIR__."../../../models/UserDAO.php";
+  require_once __DIR__."../../../classes/DAO/UserDAO.php";
   $providers = UserDAO::getInstance()->findProvider();
 
 ?>
@@ -29,13 +29,24 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <link rel="stylesheet" href="../../assets/css/app.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles.css">
   <!-- endinject -->
   <link href="../images/favicon.ico" rel="icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
 
+  <style>
+.divprovider img {
+  width: 81px !important;
+  margin-top: -15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+  </style>
+
+  
 </head>
 <body>
   <div class="container-scroller">

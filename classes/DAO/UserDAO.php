@@ -46,8 +46,8 @@
         public function findProvider() {
 
             $stmt = Banco::getInstance()->query("
-                SELECT id, name, email, numberRecord
-                FROM user
+                SELECT userId, name, email, numberRecord
+                FROM Users
                 WHERE userType = 2", 
             );
 

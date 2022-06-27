@@ -3,7 +3,7 @@
   session_start();
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
-  require_once __DIR__."../../../models/ProductDAO.php";
+  require_once __DIR__."../../../classes/DAO/ProductDAO.php";
   $productName = $_GET['productName'] ?? "";
   $products = ProductDAO::getInstance()->findCoursesWithFilters( $productName, 8);
 
@@ -438,17 +438,40 @@
               <?php 
                 foreach($products as $product) {
               ?>
-              <div class="col-4" style="height: 390px;">
-               <div class="card ml-4" style="width: 14rem; height: 264px; ">
-                <a href="../pagesProvider/detailsProduct.php?id=<?php echo $product->id; ?>">
-                 <img style="max-width: 100%" src="<?php echo $product->image; ?>" alt="...">
-                </a>
-                <div class="card-body">
-                 <b class="card-text" style="color: #47b2e4;"><?php echo $product->name; ?></b>
-                 <h4 class="pt-3"><?php echo "<b>Preciso de: </b>" . $product->inventory . " unidades."; ?></h4>
+
+                <div class="col-4" style="height: auto;">
+                <div class="product-card">
+                  <a href="../pagesProvider/detailsProduct.php?productId=<?php echo $product->productId; ?>">
+                  <div class="main-images">
+                   <img class="blue active" style="max-width: 100%" src="<?php echo $product->image; ?>">
+                 </div>
+                  </a>
+                 <div class="shoe-details">
+                  <span class="shoe_name"><?php echo $product->title; ?></span>
+                  <p><?php echo $product->subtitle; ?></p>
+                  <div class="stars">
+                   <i class='bx bxs-star' ></i>
+                   <i class='bx bxs-star' ></i>
+                   <i class='bx bxs-star' ></i>
+                   <i class='bx bxs-star' ></i>
+                   <i class='bx bx-star' ></i>
+                  </div>
+                 </div>
+                <div class="color-price">
+                 <div class="price">
+                  <span class="price_num">$ <?php echo $product->value; ?></span>
+                  <span class="price_letter">Apenas $ <?php echo $product->value; ?> reais</span>
+                 </div>
                 </div>
+                <a href="../pagesProvider/detailsProduct.php?productId=<?php echo $product->productId; ?>">
+                <div class="button">
+                 <div class="button-layer"></div>
+                 <button type="submit">Ver Detalhes</button>
+                </div>
+                </a>
                </div>
               </div>
+
               <?php
                 }
               ?>

@@ -6,7 +6,7 @@
   require_once __DIR__."../../../classes/DAO/ProductDAO.php";
 
   $productName = $_GET['productName'] ?? "";
-  $products = ProductDAO::getInstance()->findCoursesWithFilters( $productName, 8);
+  $products = ProductDAO::getInstance()->findCoursesWithFilters($productName, 8);
 
 ?>
 
@@ -440,13 +440,11 @@
                 foreach($products as $product) {
               ?>
 
-<div class="col-6" style="height: 390px;">
+                <div class="col-4" style="height: auto;">
                 <div class="product-card">
-                  <a href="../pagesManager/detailsProduct.php?id=<?php echo $product->productId; ?>">
+                  <a href="../pagesManager/detailsProduct.php?productId=<?php echo $product->productId; ?>">
                   <div class="main-images">
-                   <img id="blue" class="blue active" style="max-width: 100%" src="<?php echo $product->image; ?>" alt="blue">
-                   <img id="pink" class="pink" src="images/pink.png" alt="blue">
-                  <img id="yellow" class="yellow" src="images/yellow.png" alt="blue">
+                   <img class="blue active" style="max-width: 100%" src="<?php echo $product->image; ?>">
                  </div>
                   </a>
                  <div class="shoe-details">
@@ -461,27 +459,19 @@
                   </div>
                  </div>
                 <div class="color-price">
-                 <div class="color-option">
-                  <span class="color">Colour:</span>
-                  <div class="circles">
-                   <span class="circle blue active"  id="blue"></span>
-                   <span class="circle pink " id="pink"></span>
-                   <span class="circle yellow " id="yellow"></span>
-                  </div>
-                 </div>
                  <div class="price">
                   <span class="price_num">$ <?php echo $product->value; ?></span>
                   <span class="price_letter">Apenas $ <?php echo $product->value; ?> reais</span>
                  </div>
                 </div>
-                <a href="../pagesManager/detailsProduct.php?id=<?php echo $product->productId; ?>">
+                <a href="../pagesManager/detailsProduct.php?productId=<?php echo $product->productId; ?>">
                 <div class="button">
                  <div class="button-layer"></div>
-                 <button type="submit" href="../pagesManager/detailsProduct.php?id=<?php echo $product->id; ?>">Ver Detalhes</button>
+                 <button type="submit">Ver Detalhes</button>
                 </div>
                 </a>
                </div>
-</div>
+              </div>
 
               <?php
                 }

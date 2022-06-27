@@ -3,7 +3,7 @@
   session_start();
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
-  require_once __DIR__."../../../models/ProposalDAO.php";
+  require_once __DIR__."../../../classes/DAO/ProposalDAO.php";
   $proposals = ProposalDAO::getInstance()->findProposal();
 
 ?>
@@ -30,7 +30,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <link rel="stylesheet" href="../../assets/css/app.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/app.css">
   <!-- endinject -->
   <link href="../images/favicon.ico" rel="icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -440,14 +440,13 @@
               ?>
               <div class="col-12" style="height: 90px;">
                <div class="divprovider">
-                 <img src="https://media.istockphoto.com/photos/wallet-and-digital-security-online-payment-and-cyber-protection-picture-id1386739357?k=20&m=1386739357&s=612x612&w=0&h=DzR7DjH1DipGe24HP8mctTgp05YCfhlxSM919XWPIeY=">
+                 <img src="https://media.istockphoto.com/photos/wallet-and-digital-security-online-payment-and-cyber-protection-picture-id1386739357?k=20&m=1386739357&s=612x612&w=0&h=DzR7DjH1DipGe24HP8mctTgp05YCfhlxSM919XWPIeY=" style="height: 75px !important;">
+                 <b class="card-text margin-left-210px" style="color: #282680;">Produto: </b><?php echo $proposal->title; ?>
                  <b class="card-text margin-left-210px" style="color: #282680;">Quantidade: </b><?php echo $proposal->amount . " unidades."; ?>
                  <b class="card-text margin-left-20px" style="color: #282680;">Valor R$: </b><?php echo $proposal->value; ?>
-                 <div class="div-X">
-                  <a href="../../views/dropProposal.php?idProposal=<?php echo $proposal->id; ?>"><i class="fa-solid fa-x"></i></a>
-                 </div>
-                 <div class="div-check">
-                  <a href="../../Dashboard/pagesProvider/listProposal.php"><i class="fa-solid fa-check"></i></a>
+                 <b class="card-text margin-left-20px" style="color: #282680;">Situação: </b><?php echo $proposal->status; ?>
+                 <div class="div-X-provider">
+                  <a href="../../views/dropProposal.php?proposalId=<?php echo $proposal->proposalId; ?>"><i class="fa-solid fa-trash-can"></i></a>
                  </div>
                 </div>
               </div>

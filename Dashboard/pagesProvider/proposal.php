@@ -1,10 +1,11 @@
 <?php
-
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL);
   session_start();
-  require_once ("../../models/UserDAO.php");
-  require_once ("../../models/SupplyDAO.php");
+  require_once ("../../classes/DAO/UserDAO.php");
+  require_once ("../../classes/DAO/ProductDAO.php");
   $providers =  UserDAO::getInstance()->findProvider();
-  $supplys =  SupplyDAO::getInstance()->findSupply();
+  $products = ProductDAO::getInstance()->findProducts();
 
 ?>
 
@@ -434,28 +435,14 @@
                 <h2 class="title-new-product">Proposta</h2>
                </div>
 
-              <div class="form-group input-group-sm font-size-register col-md-6">
-               <label for="id_supply" class="form-label">Fornecimento</label><br>
-               <select class="select-provider" name="id_supply" id="id_supply">
+               <div class="form-group input-group-sm font-size-register col-md-6">
+               <label for="id_product" class="form-label">Produto</label><br>
+               <select class="select-provider" name="idProduct" id="idProduct">
                 <option></option>   
                 <?php 
-                 foreach($supplys as $supply) {
+                 foreach($products as $product) {
                 ?>
-                  <option value="<?php echo $supply->id; ?>" styles="font-size:13px" class="option"><?php echo "Qtd: " . $supply->amount . " - R$: " . $supply->value; ?></option><br>
-                <?php
-                  }
-                ?>
-               </select>
-              </div>
- 
-              <div class="form-group input-group-sm font-size-register col-md-6">
-               <label for="id_provider" class="form-label">Fornecedor</label><br>
-               <select class="select-provider" name="id_provider" id="id_provider">
-                <option></option>   
-                <?php 
-                 foreach($providers as $provider) {
-                ?>
-                  <option value="<?php echo $provider->id; ?>" styles="font-size:13px" class="option"><?php echo $provider->name; ?></option><br>
+                  <option value="<?php echo $product->productId; ?>" styles="font-size:13px" class="option"><?php echo $product->title; ?></option><br>
                 <?php
                   }
                 ?>

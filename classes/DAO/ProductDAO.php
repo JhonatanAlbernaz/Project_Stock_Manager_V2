@@ -44,11 +44,11 @@
 
         }
 
-        public function find(int $id){
+        public function find(int $productId){
 
             $stmt = Banco::getInstance()->query("
                 SELECT * FROM Products
-                WHERE id=\"$id\"", PDO::FETCH_OBJ
+                WHERE productId=\"$productId\"", PDO::FETCH_OBJ
             );
             
             $stmt->execute();
@@ -60,7 +60,7 @@
             $whereFiltroCourse = "";
             
             if($productName != ""){
-                $whereFiltroCourse .= " AND (product.name like '%$productName%' or product.id like '%$productName%')";
+                $whereFiltroCourse .= " AND (Products.title like '%$productName%' or Products.subtitle like '%$productName%')";
             }
 
             $SQL =  "SELECT * FROM Products

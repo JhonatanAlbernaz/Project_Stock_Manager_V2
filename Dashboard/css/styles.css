@@ -440,11 +440,28 @@
     margin-left: 15px;
 }
 
+.div-X-provider {
+  width: 9%;
+  height: 75px;
+  border-top-right-radius: 10px;
+  margin-left: 865px;
+  border-bottom-right-radius: 10px;
+  margin-top: -75px;
+  text-align: center;
+  box-shadow: 0 0 24px 0 rgb(0 0 0 / 12%);
+  padding: 25px;
+  font-size: 25px;
+}
+
+.div-X-provider i {
+  color: red;
+}
+
 .divprovider img {
-    width: 83px;
-    margin-top: -15px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+  width: 81px !important;
+  margin-top: -15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .margin-left-210px {

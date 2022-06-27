@@ -3,8 +3,8 @@
   session_start();
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
-  require_once __DIR__."../../../models/ProductDAO.php";
-  $product = ProductDAO::getInstance()->find($_GET['id']);
+  require_once __DIR__."../../../classes/DAO/ProductDAO.php";
+  $product = ProductDAO::getInstance()->find($_GET['productId']);
 
 ?>
 
@@ -440,7 +440,8 @@
                  <img src="<?php echo $product->image; ?>" style="width: 100%;"> 
                 </div>
                 <div class="col-7">
-                 <h2 class="pt-3"><b style="color: #282680;"><?php echo $product->name; ?></b></h2><br>
+                 <h2 class="pt-3"><b style="color: #282680;"><?php echo $product->title; ?></b></h2><br>
+                 <h5 class="pt-3"><b style="color: #282680;"><?php echo $product->subtitle; ?></b></h5><br>
                  <h4 class="pt-3"><?php echo "<b>R$: </b>" . $product->value; ?></h4>
                  <h4 class="pt-3"><?php echo "<b>Preciso de: </b>" . $product->inventory . " unidades."; ?></h4>
                </div>
