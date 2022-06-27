@@ -43,6 +43,18 @@
 
         }
 
+        public function dropProposal(int $proposalId){
+
+            $stmt = Banco::getInstance()->query("
+                DELETE FROM Proposal
+                WHERE proposalId=\"$proposalId\"", PDO::FETCH_OBJ
+            );
+            
+            $stmt->execute();
+
+            return $stmt->fetchAll();    
+        }
+
         public function rejectedProposal(int $proposalId, string $rejeitar){
 
             $stmt = Banco::getInstance()->query("

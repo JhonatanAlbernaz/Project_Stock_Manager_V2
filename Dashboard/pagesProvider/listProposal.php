@@ -30,7 +30,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <link rel="stylesheet" href="../../assets/css/app.css">
-  <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../css/styl.css">
   <!-- endinject -->
   <link href="../images/favicon.ico" rel="icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -439,8 +439,7 @@
                 foreach($proposals as $proposal) {
               ?>
               <div class="col-12" style="height: 90px;">
-               <div class="divprovider">
-                 <img src="https://media.istockphoto.com/photos/wallet-and-digital-security-online-payment-and-cyber-protection-picture-id1386739357?k=20&m=1386739357&s=612x612&w=0&h=DzR7DjH1DipGe24HP8mctTgp05YCfhlxSM919XWPIeY=" style="height: 75px !important;">
+               <div class="divprovider" style="padding-top: 30px !important;">
                  <b class="card-text margin-left-210px" style="color: #282680;">Produto: </b><?php echo $proposal->title; ?>
                  <b class="card-text margin-left-210px" style="color: #282680;">Quantidade: </b><?php echo $proposal->amount . " unidades."; ?>
                  <b class="card-text margin-left-20px" style="color: #282680;">Valor R$: </b><?php echo $proposal->value; ?>
