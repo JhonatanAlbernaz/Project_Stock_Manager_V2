@@ -3,13 +3,13 @@
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
 
-  require_once("../models/Supply.php");
-  require_once("../models/SupplyDAO.php");
+  require_once("../classes/models/Supply.php");
+  require_once("../classes/DAO/SupplyDAO.php");
 
-  $id = $_GET['idSupply'];
+  $supplyId = $_GET['supplyId'];
 
-  SupplyDAO::getInstance()->dropSupply($id);
+  SupplyDAO::getInstance()->dropSupply($supplyId);
 
-  header("Location: ../Dashboard/pagesManager/listProduct.php");
+  header("Location: ../Dashboard/pagesProvider/listSupply.php");
 
 ?>

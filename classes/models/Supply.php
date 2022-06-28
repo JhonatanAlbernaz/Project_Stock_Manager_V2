@@ -1,14 +1,12 @@
 <?php
 
     class Supply {
-        public int $id_product;
-        public int $id_proposal;
+        public int $idProduct;
         public int $amount;
         public string $value;
 
-        public function __construct(int $id_product, int $id_proposal, int $amount, string $value){
-            $this->id_product = $id_product;
-            $this->id_proposal = $id_proposal;
+        public function __construct(int $idProduct, int $amount, string $value){
+            $this->idProduct = $idProduct;
             $this->amount = $amount;
             $this->value = $value;
         }

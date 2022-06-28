@@ -1,7 +1,7 @@
 <?php
 
     require_once __DIR__."../../config/Banco.php";
-    require_once("Supply.php");
+    require_once __DIR__."../../models/Supply.php";
 
     class SupplyDAO{
         private static $instance;
@@ -16,12 +16,11 @@
         public function save(Supply $supply){
             
             $stm = Banco::getInstance()->prepare("
-                INSERT INTO supply(id_product, id_proposal, amount, value) 
-                VALUES (:id_product, :id_proposal, :amount, :value)
+                INSERT INTO Supply(idProduct, amount, value) 
+                VALUES (:idProduct, :amount, :value)
             ");
 
-            $stm->bindParam('id_product', $supply->id_product);
-            $stm->bindParam('id_proposal', $supply->id_proposal);
+            $stm->bindParam('idProduct', $supply->idProduct);
             $stm->bindParam('amount', $supply->amount);
             $stm->bindParam('value', $supply->value);
 
@@ -31,8 +30,9 @@
         public function findSupply() {
 
             $stmt= Banco::getInstance()->query("
-                SELECT id, id_product, id_proposal, amount, value 
-                FROM supply",
+                SELECT * 
+                FROM Supply
+                LEFT JOIN Products ON Products.productId=Supply.idProduct",
             );
             
             $stmt->execute();
@@ -41,11 +41,11 @@
 
         }
 
-        public function dropSupply(int $id){
+        public function dropSupply(int $supplyId){
 
             $stmt = Banco::getInstance()->query("
-                DELETE FROM supply
-                WHERE id=\"$id\"", PDO::FETCH_OBJ
+                DELETE FROM Supply
+                WHERE supplyId=\"$supplyId\"", PDO::FETCH_OBJ
             );
             
             $stmt->execute();

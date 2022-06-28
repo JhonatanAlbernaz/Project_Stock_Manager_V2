@@ -1,8 +1,8 @@
 <?php
 
   session_start();
-  require_once ("../../models/ProposalDAO.php");
-  require_once ("../../models/ProductDAO.php");
+  require_once ("../../classes/DAO/ProposalDAO.php");
+  require_once ("../../classes/DAO/ProductDAO.php");
   $proposals =  ProposalDAO::getInstance()->findProposal();
   $products = ProductDAO::getInstance()->findProducts();
 
@@ -436,26 +436,12 @@
 
               <div class="form-group input-group-sm font-size-register col-md-6">
                <label for="id_product" class="form-label">Produto</label><br>
-               <select class="select-provider" name="id_product" id="id_product">
+               <select class="select-provider" name="idProduct" id="idProduct">
                 <option></option>   
                 <?php 
                  foreach($products as $product) {
                 ?>
-                  <option value="<?php echo $product->id; ?>" styles="font-size:13px" class="option"><?php echo $product->name; ?></option><br>
-                <?php
-                  }
-                ?>
-               </select>
-              </div>
- 
-              <div class="form-group input-group-sm font-size-register col-md-6">
-               <label for="id_proposal" class="form-label">Proposta</label><br>
-               <select class="select-provider" name="id_proposal" id="id_proposal">
-                <option></option>   
-                <?php 
-                 foreach($proposals as $proposal) {
-                ?>
-                  <option value="<?php echo $proposal->id; ?>" styles="font-size:13px" class="option"><?php echo "Qtd: " . $proposal->amount . " - R$: " . $proposal->value; ?></option><br>
+                  <option value="<?php echo $product->productId; ?>" styles="font-size:13px" class="option"><?php echo $product->title; ?></option><br>
                 <?php
                   }
                 ?>

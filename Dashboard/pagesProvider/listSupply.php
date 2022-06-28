@@ -3,7 +3,7 @@
   session_start();
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
-  require_once __DIR__."../../../models/SupplyDAO.php";
+  require_once __DIR__."../../../classes/DAO/SupplyDAO.php";
   $supplys = SupplyDAO::getInstance()->findSupply();
 
 ?>
@@ -30,7 +30,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
   <link rel="stylesheet" href="../../assets/css/app.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/app.css">
   <!-- endinject -->
   <link href="../images/favicon.ico" rel="icon">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -439,15 +439,12 @@
                 foreach($supplys as $supply) {
               ?>
               <div class="col-12" style="height: 90px;">
-               <div class="divprovider">
-                 <img src="https://media.istockphoto.com/vectors/young-woman-jane-thinking-and-dreaming-mind-behavior-mental-mindset-vector-id1363343994?k=20&m=1363343994&s=612x612&w=0&h=JI9aYambhf26AbnzOL7Z-h5IXpK1syWuejoF1YvceNg=">
+               <div class="divprovider" style="padding-top: 30px !important;">
+                 <b class="card-text margin-left-210px" style="color: #282680;">Produto: </b><?php echo $supply->title; ?>
                  <b class="card-text margin-left-210px" style="color: #282680;">Quantidade: </b><?php echo $supply->amount . " unidades."; ?>
                  <b class="card-text margin-left-20px" style="color: #282680;">Valor R$: </b><?php echo $supply->value; ?>
-                 <div class="div-X">
-                  <a href="../../views/dropSuppy.php?idSupply=<?php echo $supply->id; ?>"><i class="fa-solid fa-x"></i></a>
-                 </div>
-                 <div class="div-check">
-                  <a href="../../Dashboard/pagesProvider/listSupply.php"><i class="fa-solid fa-check"></i></a>
+                 <div class="div-X-provider">
+                  <a href="../../views/dropSupply.php?supplyId=<?php echo $supply->supplyId; ?>"><i class="fa-solid fa-trash-can"></i></a>
                  </div>
                 </div>
               </div>
