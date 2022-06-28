@@ -1,6 +1,10 @@
 <?php
 
   session_start();
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL);
+  require_once __DIR__."/classes/DAO/ProductDAO.php";
+  $products = ProductDAO::getInstance()->findCoursesWithFilters();
 
 ?>
 
@@ -32,7 +36,7 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/app.css" rel="stylesheet">
+  <link href="assets/css/apps.css" rel="stylesheet">
 
 </head>
 
@@ -70,15 +74,8 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
         
-          <h1>
-            <span>As</span>
-            <span>melhores</span>
-            <span>soluções</span>
-            <span>para</span>
-            <span>o</span>
-            <span>seu</span>
-            <span>negócio</span>
-          </h1>
+          <p class="p">As melhores soluções para o seu negócio</p>
+
           <h2>Software ERP de fabricação desenvolvido para oferecer visibilidade e controle sobre todas as partes móveis do seu negócio. Estoque, vendas e muito mais.</h2>
           <div class="d-flex justify-content-center justify-content-lg-start">
             <a href="#about" class="btn-get-started scrollto">Iniciar</a>
@@ -223,47 +220,31 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/skills.png" class="img-fluid" alt="">
+
+          <div class="section-title">
+           <h2>PRODUTOS</h2>
           </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-            <h3>Compra completa do Procure-to-Pay</h3>
-            <p class="fst-italic">
-              Permite que você passe de compras manuais baseadas em papel para compras automatizadas de 
-              baixo custo e maior controle. Simplifique as compras e economize mais dinheiro em seus resultados.
-            </p>
 
-            <div class="skills-content">
+          <div class="col-lg-12 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
 
-              <div class="progress">
-                <span class="skill">Cotações de vendas para clientes <i class="val">100%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
+          <?php 
+            foreach($products as $product) {
+          ?>
 
-              <div class="progress">
-                <span class="skill">Envio Parcial / Recebimento Parcial <i class="val">90%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-
-              <div class="progress">
-                <span class="skill">Pedidos de vendas de clientes <i class="val">80%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-
-              <div class="progress">
-                <span class="skill">70+ Integrações <i class="val">70%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-
+          <div class="box">
+           <div class="card">
+            <div class="imgBx">
+             <img src="<?php echo $product->image; ?>" alt="images">
             </div>
+            <div class="details">
+             <h2><?php echo $product->title; ?><br><span>R$: <?php echo $product->value; ?></span></h2>
+            </div>
+           </div>
+          </div>
+
+          <?php
+            }
+          ?>
 
           </div>
         </div>
