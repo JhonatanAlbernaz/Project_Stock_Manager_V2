@@ -444,7 +444,7 @@
                  <b class="card-text margin-left-210px" style="color: #282680;">Quantidade: </b><?php echo $supply->amount . " unidades."; ?>
                  <b class="card-text margin-left-20px" style="color: #282680;">Valor R$: </b><?php echo $supply->value; ?>
                  <div class="div-X-provider">
-                  <a href="../../views/dropSupply.php?supplyId=<?php echo $supply->supplyId; ?>"><i class="fa-solid fa-trash-can"></i></a>
+                  <a href="../../views/dropSuppy.php?supplyId=<?php echo $supply->supplyId; ?>"><i class="fa-solid fa-trash-can"></i></a>
                  </div>
                 </div>
               </div>
